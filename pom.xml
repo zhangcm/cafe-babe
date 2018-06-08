@@ -10,10 +10,10 @@
     <version>1.0.0-SNAPSHOT</version>
 
     <modules>
-        <module>dubbo-client-demo</module>
-        <module>dubbo-server-demo</module>
-        <module>dubbo-server-api</module>
-        <module>java-base-study</module>
+        <module>dubbo-demo-consumer</module>
+        <module>dubbo-demo-api</module>
+        <module>dubbo-demo-provider</module>
+        <module>basics-demo</module>
         <module>refactor-demo</module>
     </modules>
 
