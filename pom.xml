@@ -13,6 +13,8 @@
         <module>dubbo-client-demo</module>
         <module>dubbo-server-demo</module>
         <module>dubbo-server-api</module>
+        <module>java-base-study</module>
+        <module>refactor-demo</module>
     </modules>
 
     <properties>
