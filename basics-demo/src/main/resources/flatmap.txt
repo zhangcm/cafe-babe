@@ -1,0 +1,43 @@
+/**
+ * Returns a stream consisting of the results of replacing each element of
+ * this stream with the contents of a mapped stream produced by applying
+ * the provided mapping function to each element.  Each mapped stream is
+ * {@link java.util.stream.BaseStream#close() closed} after its contents
+ * have been placed into this stream.  (If a mapped stream is {@code null}
+ * an empty stream is used, instead.)
+ *
+ * <p>This is an <a href="package-summary.html#StreamOps">intermediate
+ * operation</a>.
+ *
+ * @apiNote
+ * The {@code flatMap()} operation has the effect of applying a one-to-many
+ * transformation to the elements of the stream, and then flattening the
+ * resulting elements into a new stream.
+ *
+ * <p><b>Examples.</b>
+ *
+ * <p>If {@code orders} is a stream of purchase orders, and each purchase
+ * order contains a collection of line items, then the following produces a
+ * stream containing all the line items in all the orders:
+ * <pre>{@code
+ *     orders.flatMap(order -> order.getLineItems().stream())...
+ * }</pre>
+ *
+ * <p>If {@code path} is the path to a file, then the following produces a
+ * stream of the {@code words} contained in that file:
+ * <pre>{@code
+ *     Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8);
+ *     Stream<String> words = lines.flatMap(line -> Stream.of(line.split(" +")));
+ * }</pre>
+ * The {@code mapper} function passed to {@code flatMap} splits a line,
+ * using a simple regular expression, into an array of words, and then
+ * creates a stream of words from that array.
+ *
+ * @param <R> The element type of the new stream
+ * @param mapper a <a href="package-summary.html#NonInterference">non-interfering</a>,
+ *               <a href="package-summary.html#Statelessness">stateless</a>
+ *               function to apply to each element which produces a stream
+ *               of new values
+ * @return the new stream
+ */
+<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
