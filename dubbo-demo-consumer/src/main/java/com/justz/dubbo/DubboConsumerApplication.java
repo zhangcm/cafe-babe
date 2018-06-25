@@ -1,6 +1,7 @@
 package com.justz.dubbo;
 
 import com.justz.dubbo.api.demo.DemoProvider;
+import com.justz.dubbo.refer.DubboRefer;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -10,11 +11,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class DubboConsumerApplication {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(
-                new String[] {"META-INF/spring/dubbo-demo-consumer.xml"});
-        ctx.start();
-        DemoProvider demoProvider = (DemoProvider) ctx.getBean("demoProvider");
-        String hello = demoProvider.sayHello("world");
-        System.out.println(hello);
+        DemoProvider demoProvider = DubboRefer.refer(DemoProvider.class);
+        String result = demoProvider.sayHello();
+        System.out.println(result);
+        result = demoProvider.sayHi();
+        System.out.println(result);
     }
 }

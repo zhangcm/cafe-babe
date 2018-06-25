@@ -15,6 +15,7 @@
         <module>dubbo-demo-provider</module>
         <module>basics-demo</module>
         <module>refactor-demo</module>
+        <module>dubbo-client</module>
     </modules>
 
     <properties>
@@ -31,6 +32,12 @@
             <dependency>
                 <groupId>com.justz</groupId>
                 <artifactId>dubbo-demo-api</artifactId>
+                <version>${cafe.babe.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.justz</groupId>
+                <artifactId>dubbo-client</artifactId>
                 <version>${cafe.babe.version}</version>
             </dependency>
 

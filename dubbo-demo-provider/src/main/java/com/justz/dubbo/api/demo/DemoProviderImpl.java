@@ -6,8 +6,13 @@ package com.justz.dubbo.api.demo;
  */
 public class DemoProviderImpl implements DemoProvider {
 
-    public String sayHello(String name) {
-        return "Hello " + name;
+    @Override
+    public String sayHello() {
+        return "Hello";
     }
 
+    @Override
+    public String sayHi() {
+        return "Hi";
+    }
 }
