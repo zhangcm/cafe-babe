@@ -15,12 +15,13 @@
         <module>dubbo-demo-provider</module>
         <module>basics-demo</module>
         <module>refactor-demo</module>
+        <module>dubbo-client</module>
     </modules>
 
     <properties>
         <cafe.babe.version>1.0.0-SNAPSHOT</cafe.babe.version>
 
-        <dubbo.version>2.4.13</dubbo.version>
+        <dubbo.version>2.4.10</dubbo.version>
         <spring.version>4.3.7.RELEASE</spring.version>
         <java.version>1.8</java.version>
     </properties>
@@ -31,6 +32,12 @@
             <dependency>
                 <groupId>com.justz</groupId>
                 <artifactId>dubbo-demo-api</artifactId>
+                <version>${cafe.babe.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.justz</groupId>
+                <artifactId>dubbo-client</artifactId>
                 <version>${cafe.babe.version}</version>
             </dependency>
 
@@ -91,6 +98,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>2.5</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>

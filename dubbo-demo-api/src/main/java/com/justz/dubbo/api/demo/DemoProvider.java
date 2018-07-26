@@ -6,5 +6,7 @@ package com.justz.dubbo.api.demo;
  */
 public interface DemoProvider {
 
-    String sayHello(String name);
+    String sayHello();
+
+    String sayHi();
 }
