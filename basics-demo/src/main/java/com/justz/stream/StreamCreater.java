@@ -33,7 +33,8 @@ public class StreamCreater {
      * @return
      */
     public static Stream<Integer> generate() {
-        return Stream.generate(() -> (int) (Math.random() * 100)).limit(10);
+        Stream<Integer> list = Stream.generate(() -> (int) (Math.random() * 100)).limit(10);
+        return list;
     }
 
     /**
@@ -47,14 +48,8 @@ public class StreamCreater {
      * }
      */
     public static Stream<Integer> iterate() {
-        return Stream.iterate(3, item -> item + 1).limit(10);
-    }
-
-    public static void main(String[] args) {
-        System.out.println(createTen().collect(Collectors.toList()));
-        System.out.println(createByCollection().collect(Collectors.toList()));
-        System.out.println(generate().collect(Collectors.toList()));
-        System.out.println(iterate().collect(Collectors.toList()));
+        Stream<Integer> list = Stream.iterate(3, item -> item + 1).limit(10);
+        return list;
     }
 
 }
