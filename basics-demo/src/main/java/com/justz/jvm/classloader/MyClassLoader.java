@@ -1,4 +1,4 @@
-package com.justz.classloader;
+package com.justz.jvm.classloader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,7 +33,7 @@ public class MyClassLoader extends ClassLoader {
     public static void main(String[] args) throws Exception {
         ClassLoader classLoader = new MyClassLoader();
 
-        Object obj = classLoader.loadClass("com.justz.classloader.MyClassLoader").newInstance();
+        Object obj = classLoader.loadClass("com.justz.jvm.classloader.MyClassLoader").newInstance();
         System.out.println(obj.getClass());
         System.out.println(obj instanceof MyClassLoader);
     }
