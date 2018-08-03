@@ -1,7 +1,7 @@
 package com.justz.dubbo;
 
 import com.justz.dubbo.api.demo.DemoProviderImpl;
-import com.justz.dubbo.exporter.DubboExporter;
+//import com.justz.dubbo.exporter.DubboExporter;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
@@ -12,6 +12,6 @@ public class DubboProviderApplication {
 
     public static void main(String[] args) throws Exception {
         DemoProviderImpl demoProvider = new DemoProviderImpl();
-        DubboExporter.export(demoProvider);
+//        DubboExporter.export(demoProvider);
     }
 }
