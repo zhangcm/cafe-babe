@@ -93,12 +93,12 @@ public class NameChecker {
             if (Character.isUpperCase(firstCodePoint)) {
                 previousUpper = true;
                 if (!initialCaps) {
-                    messager.printMessage(WARNING, "名称" + name + "应当以小写字母开头", e);
+                    messager.printMessage(WARNING, "名称\"" + name + "\"应当以小写字母开头", e);
                     return;
                 }
             } else if (Character.isLowerCase(firstCodePoint)) {
                 if (initialCaps) {
-                    messager.printMessage(WARNING, "名称" + name + "应当以大写字母开头", e);
+                    messager.printMessage(WARNING, "名称\"" + name + "\"应当以大写字母开头", e);
                     return;
                 }
             } else {
@@ -121,7 +121,7 @@ public class NameChecker {
                 }
             }
             if (!conventional) {
-                messager.printMessage(WARNING, "名称" + name + "应当符合驼式命名法(Camel Case Names)", e);
+                messager.printMessage(WARNING, "名称\"" + name + "\"应当符合驼式命名法(Camel Case Names)", e);
             }
         }
 
@@ -157,7 +157,7 @@ public class NameChecker {
                 }
             }
             if (!conventional) {
-                messager.printMessage(WARNING, "常量" + name + "应当全部以大写字母或下划线命名，并且以字母开头", e);
+                messager.printMessage(WARNING, "常量\"" + name + "\"应当全部以大写字母或下划线命名，并且以字母开头", e);
             }
         }
     }
