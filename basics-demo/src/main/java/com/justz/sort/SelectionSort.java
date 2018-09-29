@@ -32,7 +32,7 @@ public class SelectionSort<T extends Comparable<T>> {
     public static void main(String[] args) {
         Integer[] arr = randomArr(20);
         System.out.println(Arrays.toString(arr));
-        new QuickSort<Integer>().sort(arr);
+        new SelectionSort<Integer>().sort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
