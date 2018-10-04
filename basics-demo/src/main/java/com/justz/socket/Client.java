@@ -9,17 +9,14 @@ public class Client {
         Socket socket = null;
         try {
             socket = new Socket("127.0.0.1", 8080);
-            InputStream is = socket.getInputStream();
-            OutputStream os = socket.getOutputStream();
-            os.write((message + "\n").getBytes());
+
+            ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
+            os.writeUTF((message));
             os.flush();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-            StringBuilder result = new StringBuilder();
-            String line;
-            while ((line = reader.readLine()) != null) {
-                result.append(line);
-            }
-            System.out.println(result);
+
+            ObjectInputStream is = new ObjectInputStream(socket.getInputStream());
+            String response = is.readUTF();
+            System.out.println("response: " + response);
         } catch (Exception e) {
 
         } finally {
