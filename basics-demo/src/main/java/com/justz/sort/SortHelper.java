@@ -3,7 +3,7 @@ package com.justz.sort;
 import java.util.Random;
 
 /**
- * @author zhangcm
+ * 排序工具类
  */
 public final class SortHelper {
 
