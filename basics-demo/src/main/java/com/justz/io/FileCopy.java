@@ -1,6 +1,8 @@
 package com.justz.io;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
 
 public class FileCopy {
 
@@ -41,9 +43,24 @@ public class FileCopy {
         writer.close();
     }
 
+    public void copyWithChannel(String src, String dest) throws IOException {
+        FileInputStream fin = new FileInputStream(src);
+        FileChannel fcin = fin.getChannel();
+        FileOutputStream fout = new FileOutputStream(dest);
+        FileChannel fcout = fout.getChannel();
+        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+        while (fcin.read(byteBuffer) != -1) {
+            byteBuffer.flip();
+            fcout.write(byteBuffer);
+            byteBuffer.clear();
+        }
+        fcin.close();
+        fcout.close();
+    }
+
     public static void main(String[] args) throws IOException {
         String src = FileCopy.class.getClassLoader().getResource("flatmap.txt").getFile();
         String dest = src.substring(0, src.lastIndexOf("/")) + "/flatmap_copy.txt";
-        new FileCopy().copyWithBufferedReader(src, dest);
+        new FileCopy().copyWithChannel(src, dest);
     }
 }
