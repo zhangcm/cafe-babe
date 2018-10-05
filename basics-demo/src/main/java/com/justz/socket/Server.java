@@ -30,26 +30,9 @@ public class Server {
 
         @Override
         public void run() {
-//            try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-//                String request = reader.readLine();
-//                System.out.println("request: " + request);
-//                OutputStream os = socket.getOutputStream();
-//                os.write(("response: " + request + "\n").getBytes());
-//                os.flush();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } finally {
-//                if (socket != null) {
-//                    try {
-//                        socket.close();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-
-            try (ObjectInputStream ois = new ObjectInputStream(socket.getInputStream());
-                 ObjectOutputStream oos = new ObjectOutputStream(socket.getOutputStream())) {
+            // BufferedReader如果读不到换行符，会一直阻塞，此处使用DataInputStream
+            try (DataInputStream ois = new DataInputStream(socket.getInputStream());
+                 DataOutputStream oos = new DataOutputStream(socket.getOutputStream())) {
                 String request = ois.readUTF();
                 System.out.println("request: " + request);
                 oos.writeUTF("response: " + request);

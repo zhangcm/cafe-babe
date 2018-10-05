@@ -10,11 +10,11 @@ public class Client {
         try {
             socket = new Socket("127.0.0.1", 8080);
 
-            ObjectOutputStream os = new ObjectOutputStream(socket.getOutputStream());
+            DataOutputStream os = new DataOutputStream(socket.getOutputStream());
             os.writeUTF((message));
             os.flush();
 
-            ObjectInputStream is = new ObjectInputStream(socket.getInputStream());
+            DataInputStream is = new DataInputStream(socket.getInputStream());
             String response = is.readUTF();
             System.out.println("response: " + response);
         } catch (Exception e) {
