@@ -1,4 +1,4 @@
-package com.justz.socket;
+package com.justz.net.socket;
 
 import java.io.*;
 import java.net.Socket;
