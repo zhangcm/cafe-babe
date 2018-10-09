@@ -8,7 +8,7 @@ import static com.justz.sort.SortHelper.swap;
 
 /**
  * 冒泡排序
- * 思路：遍历数组，跟其右侧的一个一个比，遇到小的则交换
+ * 思路：从左到右不断交换相邻逆序的元素，在一轮的循环之后，可以让最大的元素上浮到右侧
  * 级别：基础排序
  * 时间复杂度：O(n^2)
  * 空间复杂度：O(1)
@@ -16,10 +16,10 @@ import static com.justz.sort.SortHelper.swap;
 public class BubbleSort<T extends Comparable<T>> {
 
     public void sort(T[] arr) {
-        for (int i = 0; i < arr.length - 1; i++) {
-            for (int j = i + 1; j < arr.length; j++) {
-                if (less(arr[j], arr[i])) {
-                    swap(arr, i, j);
+        for (int len = arr.length, i = len - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (less(arr[j + 1], arr[j])) {
+                    swap(arr, j, j + 1);
                 }
             }
         }

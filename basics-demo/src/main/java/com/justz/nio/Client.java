@@ -12,7 +12,6 @@ import java.util.Set;
 
 /**
  * @author zhangcm
- * @since 1.0, 2018/8/16 上午11:25
  */
 public class Client {
 
@@ -44,16 +43,13 @@ public class Client {
                     System.out.print("请输入请求: ");
                     String request = scanner.next();
 
-//                    ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-//                    byteBuffer.put(request.getBytes());
-//                    byteBuffer.flip();
-
+                    // 通过wrap直接构造的ByteBuffer可以直接写
                     ByteBuffer byteBuffer = ByteBuffer.wrap(request.getBytes());
-
                     SocketChannel channel = (SocketChannel) key.channel();
                     channel.write(byteBuffer);
                     System.out.println("发送请求: " + request);
-                    channel.register(selector, SelectionKey.OP_READ);
+                    key.interestOps(SelectionKey.OP_READ);
+//                    channel.register(selector, SelectionKey.OP_READ);
                 } else if (key.isReadable()) {
                     SocketChannel channel = (SocketChannel) key.channel();
                     ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
@@ -64,7 +60,8 @@ public class Client {
                         byteBuffer.clear();
                         count = channel.read(byteBuffer);
                     }
-                    channel.register(selector, SelectionKey.OP_WRITE);
+                    key.interestOps(SelectionKey.OP_WRITE);
+//                    channel.register(selector, SelectionKey.OP_WRITE);
                 }
                 iterator.remove();
             }

@@ -1,4 +1,4 @@
-package com.justz.socket;
+package com.justz.net.socket;
 
 import java.io.*;
 import java.net.ServerSocket;
@@ -30,12 +30,13 @@ public class Server {
 
         @Override
         public void run() {
-            try (BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-                String request = reader.readLine();
+            // BufferedReader如果读不到换行符，会一直阻塞，此处使用DataInputStream
+            try (DataInputStream ois = new DataInputStream(socket.getInputStream());
+                 DataOutputStream oos = new DataOutputStream(socket.getOutputStream())) {
+                String request = ois.readUTF();
                 System.out.println("request: " + request);
-                OutputStream os = socket.getOutputStream();
-                os.write(("response: " + request + "\n").getBytes());
-                os.flush();
+                oos.writeUTF("response: " + request);
+                oos.flush();
             } catch (IOException e) {
                 e.printStackTrace();
             } finally {
