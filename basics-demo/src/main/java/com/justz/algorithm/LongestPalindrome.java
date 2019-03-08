@@ -15,19 +15,24 @@ public class LongestPalindrome {
         int end = 0;
         int maxLength = 0;
         int i = 0;
-        while (i < length) {
-            for (int j = length - 1; j > 0; j--) {
+        // 如果剩下的元素已经小于了maxLength，就没必要继续找了
+        while (i < length - maxLength) {
+            int j = length - 1;
+            // 如果i与j的差距已经小于了maxLength，就没必要继续找了
+            while (j > (i + maxLength)) {
                 if (arr[j] == arr[i] && isPalindrome(arr, i, j)) {
                     if (maxLength < j - i) {
                         maxLength = j - i;
                         start = i;
                         end = j;
+                        break;
                     }
                 }
+                j--;
             }
             i++;
         }
-        return new StringBuilder(s).subSequence(start, end + 1).toString();
+        return s.substring(start, end + 1);
     }
 
     private static boolean isPalindrome(char[] arr, int start, int end) {
