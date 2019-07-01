@@ -1,4 +1,4 @@
-package com.justz.thread;
+package com.justz.concurrent;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
