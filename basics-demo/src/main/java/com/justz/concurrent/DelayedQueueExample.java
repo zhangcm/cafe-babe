@@ -15,7 +15,7 @@ public class DelayedQueueExample {
 
     static class Producer {
 
-        public void produce(DelayedTask delayedTask) {
+        void produce(DelayedTask delayedTask) {
             delayQueue.put(delayedTask);
         }
 
@@ -64,11 +64,11 @@ public class DelayedQueueExample {
             return Long.compare(this.executeTime, ((DelayedTask) o).getExecuteTime());
         }
 
-        public long getExecuteTime() {
+        long getExecuteTime() {
             return executeTime;
         }
 
-        public String getName() {
+        String getName() {
             return name;
         }
     }
